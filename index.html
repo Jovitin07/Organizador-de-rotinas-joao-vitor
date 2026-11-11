@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AetherFlow - Organizador de Rotinas 3D</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Objetos 3D Voando no Fundo -->
+  <div class="background-3d">
+    <div class="cube cube-1">
+      <div class="face front"></div>
+      <div class="face back"></div>
+      <div class="face left"></div>
+      <div class="face right"></div>
+      <div class="face top"></div>
+      <div class="face bottom"></div>
+    </div>
+    <div class="pyramid pyramid-1">
+      <div class="p-face p-front"></div>
+      <div class="p-face p-back"></div>
+      <div class="p-face p-left"></div>
+      <div class="p-face p-right"></div>
+    </div>
+    <div class="sphere sphere-1"></div>
+    <div class="cube cube-2">
+      <div class="face front"></div>
+      <div class="face back"></div>
+      <div class="face left"></div>
+      <div class="face right"></div>
+      <div class="face top"></div>
+      <div class="face bottom"></div>
+    </div>
+  </div>
+
+  <!-- Cabeçalho -->
+  <header class="header">
+    <h1 class="gradient-text">AetherFlow</h1>
+    <p>Organizador Inteligente de Rotinas Diárias</p>
+  </header>
+
+  <!-- Container Principal dos Cards -->
+  <main class="container">
+    <div class="cards-grid">
+      
+      <!-- Card Estudo -->
+      <article class="card" onclick="openModal('estudo')">
+        <div class="card-icon">📚</div>
+        <h2>Estudo</h2>
+        <p>Desenvolvimento acadêmico, foco e novas habilidades.</p>
+        <div class="card-actions">
+          <button class="btn-detail">Ver Resumo</button>
+          <a href="estudo.html" class="btn-link" onclick="event.stopPropagation()">Acessar Página &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Card Trabalho -->
+      <article class="card" onclick="openModal('trabalho')">
+        <div class="card-icon">💼</div>
+        <h2>Trabalho</h2>
+        <p>Gestão de tarefas, reuniões e metas profissionais.</p>
+        <div class="card-actions">
+          <button class="btn-detail">Ver Resumo</button>
+          <a href="trabalho.html" class="btn-link" onclick="event.stopPropagation()">Acessar Página &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Card Lazer -->
+      <article class="card" onclick="openModal('lazer')">
+        <div class="card-icon">🎬</div>
+        <h2>Lazer</h2>
+        <p>Momentos de descanso, séries, filmes e descontração.</p>
+        <div class="card-actions">
+          <button class="btn-detail">Ver Resumo</button>
+          <a href="lazer.html" class="btn-link" onclick="event.stopPropagation()">Acessar Página &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Card Hobby -->
+      <article class="card" onclick="openModal('hobby')">
+        <div class="card-icon">🎨</div>
+        <h2>Hobby</h2>
+        <p>Música, pintura, leitura e projetos pessoais criativos.</p>
+        <div class="card-actions">
+          <button class="btn-detail">Ver Resumo</button>
+          <a href="hobby.html" class="btn-link" onclick="event.stopPropagation()">Acessar Página &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Card Esportes -->
+      <article class="card" onclick="openModal('esportes')">
+        <div class="card-icon">⚡</div>
+        <h2>Esportes</h2>
+        <p>Atividades físicas, treinos diários e mobilidade.</p>
+        <div class="card-actions">
+          <button class="btn-detail">Ver Resumo</button>
+          <a href="esportes.html" class="btn-link" onclick="event.stopPropagation()">Acessar Página &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Card Saúde -->
+      <article class="card" onclick="openModal('saude')">
+        <div class="card-icon">🧘‍♂️</div>
+        <h2>Saúde</h2>
+        <p>Alimentação saudável, hidratação e sono reparador.</p>
+        <div class="card-actions">
+          <button class="btn-detail">Ver Resumo</button>
+          <a href="saude.html" class="btn-link" onclick="event.stopPropagation()">Acessar Página &rarr;</a>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Estrutura do Modal -->
+  <div id="routineModal" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModalDirect()">&times;</span>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- JavaScript Embutido -->
+  <script>
+    const routineData = {
+      estudo: {
+        title: "📚 Rotina de Estudos",
+        desc: "Organização diária para maximizar a aprendizagem e retenção de conteúdo.",
+        items: ["08:00 - Leitura de artigos acadêmicos", "14:00 - Prática de programação e algoritmos", "19:00 - Revisão de notas com Pomodoro (25/5 min)"],
+        link: "estudo.html"
+      },
+      trabalho: {
+        title: "💼 Rotina de Trabalho",
+        desc: "Foco total na execução de projetos e produtividade profissional.",
+        items: ["09:00 - Alinhamento com a equipe (Daily)", "10:30 - Bloco de trabalho profundo (Deep Work)", "16:00 - Resposta de e-mails e organização de demandas"],
+        link: "trabalho.html"
+      },
+      lazer: {
+        title: "🎬 Rotina de Lazer",
+        desc: "Tempo de descanso essencial para recarregar as energias mentais.",
+        items: ["18:30 - Assistir séries ou filmes", "20:00 - Jogos online com amigos", "21:30 - Ouvir podcasts descontraídos"],
+        link: "lazer.html"
+      },
+      hobby: {
+        title: "🎨 Rotina de Hobbies",
+        desc: "Expressão criativa e atividades relaxantes fora da rotina principal.",
+        items: ["17:00 - Prática de instrumento musical", "18:00 - Ilustração digital / Escrita criativa", "Finais de semana - Jardinagem e fotografia"],
+        link: "hobby.html"
+      },
+      esportes: {
+        title: "⚡ Rotina de Esportes",
+        desc: "Fortalecimento físico, condicionamento cardio e energia.",
+        items: ["06:30 - Corrida ao ar livre (5km)", "17:30 - Musculação / Calistenia", "Alongamento matinal diário"],
+        link: "esportes.html"
+      },
+      saude: {
+        title: "🧘‍♂️ Rotina de Saúde",
+        desc: "Cuidado integral com o corpo, mente e bem-estar geral.",
+        items: ["Metas de 2.5L de água por dia", "Meditação guiada de 10 minutos (manhã)", "Higiene do sono a partir das 22:00"],
+        link: "saude.html"
+      }
+    };
+
+    function openModal(key) {
+      const data = routineData[key];
+      if (!data) return;
+
+      const modalBody = document.getElementById("modalBody");
+      modalBody.innerHTML = `
+        <h2>${data.title}</h2>
+        <p class="modal-desc">${data.desc}</p>
+        <ul class="modal-list">
+          ${data.items.map(item => `<li>✨ ${item}</li>`).join('')}
+        </ul>
+        <a href="${data.link}" class="modal-btn-page">Ir para página detalhada</a>
+      `;
+
+      document.getElementById("routineModal").classList.add("active");
+    }
+
+    function closeModal(event) {
+      if (event.target.classList.contains('modal-overlay')) {
+        document.getElementById("routineModal").classList.remove("active");
+      }
+    }
+
+    function closeModalDirect() {
+      document.getElementById("routineModal").classList.remove("active");
+    }
+  </script>
+</body>
+</html>
